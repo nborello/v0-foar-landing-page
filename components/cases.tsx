@@ -91,29 +91,7 @@ export default function Cases() {
         </div>
 
         {/* Testimonial */}
-        <div className="bg-white p-10 md:p-16 rounded-lg shadow-sm animate-on-scroll opacity-0">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-8 items-start">
-              <div className="flex-shrink-0">
-                <div className="w-20 h-20 rounded-full bg-gray-200 overflow-hidden">
-                  <img src="/professional-headshot.png" alt="Cliente" className="w-full h-full object-cover" />
-                </div>
-              </div>
-              <div className="space-y-4 flex-1">
-                <p className="font-[family-name:var(--font-space-grotesk)] text-xl md:text-2xl lg:text-3xl text-black leading-relaxed italic">
-                  "FOAR transformó completamente nuestra operación. Lo que antes tomaba días ahora se resuelve en
-                  minutos, y las decisiones que tomamos tienen fundamento real."
-                </p>
-                <div>
-                  <p className="font-[family-name:var(--font-inter)] text-base font-semibold text-black">
-                    María González
-                  </p>
-                  <p className="font-[family-name:var(--font-inter)] text-sm text-gray-600">CEO, TechCorp</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   )
