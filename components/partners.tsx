@@ -35,7 +35,11 @@ export default function Partners() {
   ]
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-32 px-6 md:px-12 bg-white">
+    <section
+      ref={sectionRef}
+      id="partners"
+      className="py-20 md:py-32 px-6 md:px-12 bg-white scroll-mt-24"
+    >
       <div className="container mx-auto max-w-7xl">
         <h3 className="font-[family-name:var(--font-space-grotesk)] text-2xl md:text-3xl font-bold text-black text-center mb-6 animate-on-scroll opacity-0">
           Partners & herramientas

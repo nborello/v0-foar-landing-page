@@ -43,7 +43,11 @@ export default function HowWeWork() {
   ]
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-32 px-6 md:px-12 bg-gray-50">
+    <section
+      ref={sectionRef}
+      id="how-we-work"
+      className="py-20 md:py-32 px-6 md:px-12 bg-gray-50 scroll-mt-24"
+    >
       <div className="container mx-auto max-w-7xl">
         <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl md:text-5xl lg:text-6xl font-bold text-black text-center mb-20 text-balance animate-on-scroll opacity-0">
           Cómo lo hacemos

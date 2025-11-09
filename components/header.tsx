@@ -20,8 +20,8 @@ export default function Header() {
   const menuItems = [
     { label: "Servicios", href: "#servicios" },
     { label: "Work", href: "#work" },
-    { label: "Recursos", href: "#recursos" },
-    { label: "Sobre FOAR", href: "#sobre-foar" },
+    { label: "Recursos", href: "#partners" },
+    { label: "Sobre FOAR", href: "#how-we-work" },
     { label: "Contacto", href: "#contacto" },
   ]
 
@@ -34,11 +34,7 @@ export default function Header() {
       <nav className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo con <img> nativo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-            aria-label="Inicio"
-          >
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label="Inicio">
             <img
               src="/images/design-mode/LOGO%20Principal%20Negro.png"
               alt="FOAR logo"
