@@ -24,14 +24,14 @@ export default function LogoStrip() {
   }, [])
 
   const logos = [
-    { name: "Google", width: 120 },
-    { name: "Meta", width: 100 },
-    { name: "OpenAI", width: 120 },
-    { name: "Microsoft", width: 130 },
-    { name: "Salesforce", width: 140 },
-    { name: "HubSpot", width: 120 },
-    { name: "Amazon", width: 120 },
-    { name: "Vercel", width: 110 },
+    { name: "Google", width: 180 },
+    { name: "Meta", width: 160 },
+    { name: "OpenAI", width: 180 },
+    { name: "Microsoft", width: 200 },
+    { name: "Salesforce", width: 190 },
+    { name: "HubSpot", width: 180 },
+    { name: "Amazon", width: 190 },
+    { name: "Vercel", width: 170 },
   ]
 
   return (
@@ -46,21 +46,21 @@ export default function LogoStrip() {
 
         {/* Carrusel con fade lateral */}
         <div className="relative w-full overflow-hidden animate-on-scroll opacity-0 animate-delay-100">
-          {/* Gradientes de difuminado laterales */}
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-          <div className="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+          {/* Gradientes laterales para difuminado */}
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-40 bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-40 bg-gradient-to-l from-white to-transparent z-10"></div>
 
           {/* Logos desplazándose */}
-          <div className="flex items-center gap-16 animate-scroll whitespace-nowrap">
+          <div className="flex items-center gap-28 animate-scroll whitespace-nowrap">
             {[...logos, ...logos].map((logo, index) => (
               <div
                 key={`${logo.name}-${index}`}
                 className="flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
               >
                 <img
-                  src={`/placeholder-graphic.png?height=40&width=${logo.width}&query=${logo.name}+logo`}
+                  src={`/placeholder-graphic.png?height=60&width=${logo.width}&query=${logo.name}+logo`}
                   alt={`${logo.name} logo`}
-                  className="h-8 md:h-10 w-auto"
+                  className="h-12 md:h-16 w-auto"
                 />
               </div>
             ))}
@@ -80,7 +80,7 @@ export default function LogoStrip() {
         }
         .animate-scroll {
           display: flex;
-          animation: scroll 25s linear infinite;
+          animation: scroll 30s linear infinite;
           width: max-content;
         }
       `}</style>
