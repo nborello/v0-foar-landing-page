@@ -55,12 +55,12 @@ export default function LogoStrip() {
             {[...logos, ...logos].map((logo, index) => (
               <div
                 key={`${logo.name}-${index}`}
-                className="flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
+                className="flex-shrink-0 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity duration-300"
               >
                 <img
                   src={`/placeholder-graphic.png?height=60&width=${logo.width}&query=${logo.name}+logo`}
                   alt={`${logo.name} logo`}
-                  className="h-12 md:h-16 w-auto"
+                  className="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-transform duration-300 ease-out will-change-transform hover:scale-105"
                 />
               </div>
             ))}

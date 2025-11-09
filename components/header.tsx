@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -35,12 +36,20 @@ export default function Header() {
     >
       <nav className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* Logo como imagen */}
           <Link
             href="/"
-            className="text-2xl font-bold font-[family-name:var(--font-space-grotesk)] hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            aria-label="Inicio"
           >
-            FOAR
+            <Image
+              src="/logo-foar.svg" // 👉 reemplazá con la ruta o formato real de tu logo
+              alt="FOAR"
+              width={100}
+              height={40}
+              priority
+              className="h-8 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Menu */}
