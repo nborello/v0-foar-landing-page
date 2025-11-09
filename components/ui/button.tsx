@@ -21,18 +21,24 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 )
 
-type ButtonProps = React.ComponentProps<"a"> & VariantProps<typeof buttonVariants>
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, ...props }, ref) => {
+  return <button className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+})
+Button.displayName = "Button"
+
+type ExternalButtonProps = React.ComponentProps<"a"> & VariantProps<typeof buttonVariants>
 
 /** Botón externo hacia la sección #contacto */
-export function ExternalContactButton({
-  className,
-  variant,
-  size,
-  ...props
-}: ButtonProps) {
+export function ExternalContactButton({ className, variant, size, ...props }: ExternalButtonProps) {
   return (
     <a
       href="https://preview-foar-landing-page-kzmlzh4dbso2c5y3ilq1.vusercontent.net/#contacto"
@@ -45,3 +51,5 @@ export function ExternalContactButton({
     </a>
   )
 }
+
+export { Button, buttonVariants }

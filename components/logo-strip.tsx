@@ -58,7 +58,7 @@ export default function LogoStrip() {
                 className="flex-shrink-0 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity duration-300"
               >
                 <img
-                  src={`/placeholder-graphic.png?height=60&width=${logo.width}&query=${logo.name}+logo`}
+                  src={`/ceholder-svg-key-lonha-height-60-width-.jpg?key=lonha&height=60&width=${logo.width}`}
                   alt={`${logo.name} logo`}
                   className="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-transform duration-300 ease-out will-change-transform hover:scale-105"
                 />
