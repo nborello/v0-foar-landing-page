@@ -30,20 +30,31 @@ export interface ButtonProps
   asChild?: boolean
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, ...props }, ref) => {
-  return <button className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
-})
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, ...props }, ref) => {
+    return (
+      <button
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
+  },
+)
 Button.displayName = "Button"
 
 type ExternalButtonProps = React.ComponentProps<"a"> & VariantProps<typeof buttonVariants>
 
-/** Botón externo hacia la sección #contacto */
-export function ExternalContactButton({ className, variant, size, ...props }: ExternalButtonProps) {
+/** Botón interno que redirige al ID #contacto */
+export function ExternalContactButton({
+  className,
+  variant,
+  size,
+  ...props
+}: ExternalButtonProps) {
   return (
     <a
-      href="https://preview-foar-landing-page-kzmlzh4dbso2c5y3ilq1.vusercontent.net/#contacto"
-      target="_blank"
-      rel="noopener noreferrer"
+      href="#contacto"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     >
