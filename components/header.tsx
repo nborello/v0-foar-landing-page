@@ -20,10 +20,8 @@ export default function Header() {
 
   const menuItems = [
     { label: "Servicios", href: "#servicios" },
-    { label: "Industrias", href: "#industrias" },
     { label: "Work", href: "#work" },
     { label: "Recursos", href: "#recursos" },
-    { label: "Carreras", href: "#carreras" },
     { label: "Sobre FOAR", href: "#sobre-foar" },
     { label: "Contacto", href: "#contacto" },
   ]
@@ -36,14 +34,14 @@ export default function Header() {
     >
       <nav className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
-          {/* Logo como imagen */}
+          {/* Logo */}
           <Link
             href="/"
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             aria-label="Inicio"
           >
             <Image
-              src="/logo-foar.svg" // 👉 reemplazá con la ruta o formato real de tu logo
+              src="/logo-foar.svg"
               alt="FOAR"
               width={100}
               height={40}
@@ -53,17 +51,19 @@ export default function Header() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center gap-8">
-            {menuItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="text-sm text-black hover:text-[#FF0000] transition-colors relative group"
-              >
-                {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF0000] transition-all group-hover:w-full" />
-              </Link>
-            ))}
+          <div className="hidden lg:flex flex-1 items-center justify-center">
+            <div className="flex justify-center gap-14 w-4/5 max-w-5xl">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm font-medium tracking-wide text-black hover:text-[#FF0000] transition-colors relative group"
+                >
+                  {item.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF0000] transition-all group-hover:w-full" />
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* CTA Button */}
