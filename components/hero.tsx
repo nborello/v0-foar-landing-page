@@ -24,6 +24,13 @@ export default function Hero() {
     return () => observer.disconnect()
   }, [])
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contacto')
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <section
       ref={heroRef}
@@ -42,6 +49,7 @@ export default function Hero() {
         <div className="pt-6 animate-on-scroll opacity-0 animate-delay-200">
           <Button
             size="lg"
+            onClick={scrollToContact}
             className="bg-[#FF0000] hover:bg-[#DD0000] text-white px-10 py-6 text-base md:text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             {"Hablemos"}
