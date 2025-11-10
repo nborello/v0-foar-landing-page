@@ -59,7 +59,7 @@ export default function Cases() {
         </h2>
 
         {/* Cases Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-5">
           {cases.map((caseItem, index) => (
             <div
               key={caseItem.title}
