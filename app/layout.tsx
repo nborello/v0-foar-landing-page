@@ -1,7 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Space_Grotesk, Inter } from "next/font/google"
+import { Space_Grotesk, Inter } from 'next/font/google'
 import { Analytics } from "@vercel/analytics/next"
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -43,9 +44,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="es" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${spaceGrotesk.variable} ${inter.variable} font-sans antialiased`}>
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

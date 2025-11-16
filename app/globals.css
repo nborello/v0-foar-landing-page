@@ -122,7 +122,10 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-white text-black;
+    @apply bg-background text-foreground;
+  }
+  .dark body {
+    @apply bg-black text-white;
   }
 }
 
