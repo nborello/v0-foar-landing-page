@@ -5,7 +5,7 @@ import { ArrowRight, ChevronDown } from "lucide-react"
 
 export default function Services() {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const [activeIndex, setActiveIndex] = useState<number | null>(0)
+  const [activeIndex, setActiveIndex] = useState<number | null>(null) // todos cerrados al inicio
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,58 +27,36 @@ export default function Services() {
 
   const services = [
     {
-      title: "Automatización de Procesos",
-      items: [
-        "Flujos multicanal",
-        "Emails y recordatorios automáticos",
-        "Seguimiento de leads",
-        "Integraciones",
-      ],
-      claim: "Menos tareas manuales. Más tiempo para crecer.",
-      image: "/placeholder-graphic.png",
-    },
-    {
-      title: "Datos & Analytics",
-      items: [
-        "Estrategia y gobernanza de datos",
-        "Tracking server-side",
-        "Ingeniería de datos",
-        "Modelos de atribución y MMM",
-      ],
-      claim: "Decidir con datos, no suposiciones.",
-      image: "/placeholder-graphic.png",
-    },
-    {
-      title: "Chatbots y Asistentes",
-      items: [
-        "WhatsApp y web",
-        "Enrutamiento a humano",
-        "Base de conocimiento",
-        "Scoring de intención",
-      ],
-      claim: "Atención inmediata que convierte.",
-      image: "/placeholder-graphic.png",
-    },
-    {
       title: "Marketing Inteligente",
       items: [
         "Creatividades data-driven",
-        "Paid search y social",
-        "Experimentación continua",
-        "CRO y SXO",
+        "Paid search y paid social",
+        "Experimentación y testing continuo",
+        "CRO y SXO para mejorar la conversión",
       ],
       claim: "Invertir mejor, no solo invertir más.",
       image: "/placeholder-graphic.png",
     },
     {
-      title: "Dashboards & BI",
+      title: "Automatización de Procesos",
       items: [
-        "KPI en tiempo real",
-        "Análisis de cohortes",
-        "Customer Lifetime Value",
-        "Embudos y atribución",
+        "Flujos multicanal (email, WhatsApp, SMS)",
+        "Emails y recordatorios automáticos",
+        "Seguimiento y nurturing de leads",
+        "Integraciones entre tus herramientas actuales",
       ],
-      claim: "Ver hoy lo que impacta mañana.",
+      claim: "Menos tareas manuales. Más tiempo para crecer.",
+      image: "/placeholder-graphic.png",
+    },
+    {
+      title: "Data Design",
+      items: [
+        "Diseño de dashboards accionables",
+        "Definición de KPIs y métricas clave",
+        "Historias de datos para dirección y equipos",
+        "Visualizaciones claras para tomar decisiones rápido",
+      ],
+      claim: "Ver claro qué está pasando y qué hacer después.",
       image: "/placeholder-graphic.png",
     },
   ]
@@ -128,7 +106,7 @@ export default function Services() {
                   className="w-full flex items-center justify-between gap-4 px-5 md:px-6 py-4 md:py-5"
                 >
                   <div className="flex items-center gap-4 md:gap-5">
-                    {/* Número */}
+                    {/* Número rojo */}
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFE5E5] text-[#FF0000] font-[family-name:var(--font-space-grotesk)] text-sm font-semibold">
                       {String(index + 1).padStart(2, "0")}
                     </div>
