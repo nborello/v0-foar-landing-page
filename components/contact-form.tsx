@@ -1,15 +1,13 @@
 "use client"
 
 import type React from "react"
-
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
 export default function ContactForm() {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,34 +27,43 @@ export default function ContactForm() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Here you can integrate with formsubmit.co or getform.io
-    // Example: await fetch('https://formsubmit.co/your@email.com', { method: 'POST', body: new FormData(e.currentTarget) })
-
-    setTimeout(() => {
-      setIsSubmitting(false)
-      alert("Gracias por tu mensaje. Te contactaremos pronto.")
-      ;(e.target as HTMLFormElement).reset()
-    }, 1000)
-  }
-
   return (
-    <section ref={sectionRef} id="contacto" className="py-20 md:py-32 px-6 md:px-12 bg-white">
+    <section
+      ref={sectionRef}
+      id="contacto"
+      className="py-20 md:py-32 px-6 md:px-12 bg-white"
+    >
       <div className="container mx-auto max-w-3xl">
         <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl md:text-5xl lg:text-6xl font-bold text-black text-center mb-8 text-balance animate-on-scroll opacity-0">
           Hablemos de tu proyecto
         </h2>
+
         <p className="font-[family-name:var(--font-inter)] text-base md:text-lg text-gray-600 text-center mb-12 animate-on-scroll opacity-0 animate-delay-100">
           Contanos qué necesitás y te respondemos en menos de 24 horas.
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-6 animate-on-scroll opacity-0 animate-delay-200">
+        {/* FormSubmit.co */}
+        <form
+          action="https://formsubmit.co/foaragency@gmail.com"
+          method="POST"
+          className="space-y-6 animate-on-scroll opacity-0 animate-delay-200"
+        >
+          {/* Hidden fields */}
+          <input
+            type="hidden"
+            name="_subject"
+            value="Nuevo mensaje desde la web de FOAR"
+          />
+          <input type="hidden" name="_captcha" value="false" />
+          {/* Redirección después de enviar (opcional) */}
+          {/* <input type="hidden" name="_next" value="https://foar.vercel.app/gracias" /> */}
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="name" className="font-[family-name:var(--font-inter)] text-sm font-medium text-black">
+              <label
+                htmlFor="name"
+                className="font-[family-name:var(--font-inter)] text-sm font-medium text-black"
+              >
                 Nombre *
               </label>
               <Input
@@ -68,8 +75,12 @@ export default function ContactForm() {
                 className="border-gray-300 focus:border-[#FF0000] focus:ring-[#FF0000]"
               />
             </div>
+
             <div className="space-y-2">
-              <label htmlFor="email" className="font-[family-name:var(--font-inter)] text-sm font-medium text-black">
+              <label
+                htmlFor="email"
+                className="font-[family-name:var(--font-inter)] text-sm font-medium text-black"
+              >
                 Email *
               </label>
               <Input
@@ -84,7 +95,10 @@ export default function ContactForm() {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="company" className="font-[family-name:var(--font-inter)] text-sm font-medium text-black">
+            <label
+              htmlFor="company"
+              className="font-[family-name:var(--font-inter)] text-sm font-medium text-black"
+            >
               Empresa
             </label>
             <Input
@@ -97,7 +111,10 @@ export default function ContactForm() {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="message" className="font-[family-name:var(--font-inter)] text-sm font-medium text-black">
+            <label
+              htmlFor="message"
+              className="font-[family-name:var(--font-inter)] text-sm font-medium text-black"
+            >
               Mensaje *
             </label>
             <Textarea
@@ -112,10 +129,9 @@ export default function ContactForm() {
 
           <Button
             type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-[#FF0000] hover:bg-[#DD0000] text-white py-6 text-base md:text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50"
+            className="w-full bg-[#FF0000] hover:bg-[#DD0000] text-white py-6 text-base md:text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            {isSubmitting ? "Enviando..." : "Enviar mensaje"}
+            Enviar mensaje
           </Button>
         </form>
       </div>
