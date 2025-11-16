@@ -1,13 +1,15 @@
 "use client"
 
 import type React from "react"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
 export default function ContactForm() {
   const sectionRef = useRef<HTMLDivElement>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,6 +29,49 @@ export default function ContactForm() {
     return () => observer.disconnect()
   }, [])
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setStatus("idle")
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const payload: Record<string, any> = {}
+
+    formData.forEach((value, key) => {
+      payload[key] = value
+    })
+
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/foaragency@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      })
+
+      if (!res.ok) {
+        throw new Error("Request failed")
+      }
+
+      const data = await res.json()
+
+      if (data.success === "true" || data.success === true) {
+        setStatus("success")
+        form.reset()
+      } else {
+        setStatus("error")
+      }
+    } catch (error) {
+      console.error(error)
+      setStatus("error")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <section
       ref={sectionRef}
@@ -42,22 +87,10 @@ export default function ContactForm() {
           Contanos qué necesitás y te respondemos en menos de 24 horas.
         </p>
 
-        {/* FormSubmit.co */}
         <form
-          action="https://formsubmit.co/foaragency@gmail.com"
-          method="POST"
+          onSubmit={handleSubmit}
           className="space-y-6 animate-on-scroll opacity-0 animate-delay-200"
         >
-          {/* Hidden fields */}
-          <input
-            type="hidden"
-            name="_subject"
-            value="Nuevo mensaje desde la web de FOAR"
-          />
-          <input type="hidden" name="_captcha" value="false" />
-          {/* Redirección después de enviar (opcional) */}
-          {/* <input type="hidden" name="_next" value="https://foar.vercel.app/gracias" /> */}
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label
@@ -129,10 +162,24 @@ export default function ContactForm() {
 
           <Button
             type="submit"
-            className="w-full bg-[#FF0000] hover:bg-[#DD0000] text-white py-6 text-base md:text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
+            disabled={isSubmitting}
+            className="w-full bg-[#FF0000] hover:bg-[#DD0000] text-white py-6 text-base md:text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Enviar mensaje
+            {isSubmitting ? "Enviando..." : "Enviar mensaje"}
           </Button>
+
+          {status === "success" && (
+            <p className="mt-2 text-sm text-green-600 text-center">
+              Gracias por tu mensaje. Te vamos a escribir a la brevedad.
+            </p>
+          )}
+
+          {status === "error" && (
+            <p className="mt-2 text-sm text-red-600 text-center">
+              Hubo un problema al enviar el formulario. Probá de nuevo en unos
+              minutos o escribinos a foaragency@gmail.com.
+            </p>
+          )}
         </form>
       </div>
     </section>
